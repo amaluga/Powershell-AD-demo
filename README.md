@@ -8,7 +8,7 @@ Installations performed on Oracle VirtualBox 6.1.2 r135662:
 2. Installed W10 - CLIENT: 10.0.0.2, CLIENT1
 3. Added CLIENT1 to DEMO domain.
 
-Rest of the actions were performed in Powershell, including:
+Rest of the actions were performed in Powershell on CLIENT1, including:
 1. Creating random data required for ADUsers creation (Name, Surname, SAM etc.)
 2. Creating OUs - 1st Line, 2nd Line, TM, IM, Admins, CEOs
 3. Creating Groups

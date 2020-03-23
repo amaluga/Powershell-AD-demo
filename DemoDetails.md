@@ -18,16 +18,3 @@ F: Updating AD: creating groups, managing rights, creating Roaming Profiles for 
 ... and more.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-

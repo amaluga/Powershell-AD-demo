@@ -147,17 +147,17 @@ function New-RandomUsers {
             break;
         }
         'Incident Manager'{
-            $path = 'OU=TMs, DC=demo, DC=com';
+            $path = 'OU=IMs, DC=demo, DC=com';
             $prefix = 'IM';
             break;
         }
         'Admin'{
-            $path = 'OU=TMs, DC=demo, DC=com';
+            $path = 'OU=Admins, DC=demo, DC=com';
             $prefix = 'A';
             break;
         }
         'CEO'{
-            $path = 'OU=TMs, DC=demo, DC=com';
+            $path = 'OU=CEOs, DC=demo, DC=com';
             $prefix = 'C';
             break;
         }
@@ -194,7 +194,8 @@ function Avoid-Duplicates{
 
     
     if($countIfMirrorExists.count -gt 0){
-        
+        #by default Strings would be sorted by ASCII what would throw duplicate error, 
+        #needed to sort it on line 200
         $sortedStrings = @()
         $sortedStrings += ($countIfMirrorExists.$propertyName | Group-Object Length | ForEach-Object {$_.group | Sort-Object})
         $lastIndex = $sortedStrings[-1]
@@ -300,14 +301,14 @@ function New-DemoGroups {
 
 function Add-DemoADGroupMembers {
     Param ([Parameter(Mandatory = $true)] $quantity,
-    [Parameter(Mandatory = $true)] $project,
+    [Parameter(Mandatory = $true)] $tier,
     [Parameter(Mandatory = $true)] $members
     )
     
-    if ($project -eq '1st'){
+    if ($tier -eq '1st'){
         #1st line
         $identity = '1st_project'
-    } elseif ($project -eq '2nd'){
+    } elseif ($tier -eq '2nd'){
         #2nd line
         $identity = '2nd_project'
     }
@@ -346,7 +347,7 @@ function Add-MstscMembers{
 function Set-ProfilePathString{
     Param([Parameter(Mandatory = $true)] $string)
     
-    $profilePath = '\\WIN-E83VKKDADK7\Profiles\' + $string + '\%username%'
+    $profilePath = '\\SERVER.DEMO.COM\Profiles\' + $string + '\%username%'
 
     return $profilePath
 }

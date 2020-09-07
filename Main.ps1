@@ -1,15 +1,16 @@
 #Part 1 CSV Creation
 Set-ExecutionPolicy RemoteSigned
 
-Import-Module C:\Users\Amadeusz.DEMO\Desktop\MyProject\DemoModule.psm1
+Set-Location C:\Users\"Amadeusz Demo"\Desktop\Powershell-AD-demo-Master
+Import-Module .\DemoModule.psm1
 
-New-CSV -path C:\Users\Amadeusz.DEMO\Desktop\MyProject\DomainUsers_CSV.csv
+New-CSV -path .\DomainUsers_CSV.csv
 
 
 #Part 2 Adding members from CSV and managing AD
 New-DemoOUs
 
-New-ADUsersFromCSV -path C:\Users\Amadeusz.DEMO\Desktop\MyProject\DomainUsers_CSV.csv
+New-ADUsersFromCSV -path .\DomainUsers_CSV.csv
 
 $1stLine = Get-ADUser -Filter 'Title -eq "1st Line Advisor"'
 $2ndLine = Get-ADUser -Filter 'Title -eq "2nd Line Advisor"'
@@ -25,8 +26,8 @@ $profilesDirs = Get-ProfilesDirs
 New-DemoGroups
 
 #adding members to groups
-Add-DemoADGroupMembers -quantity $1stLine.count -members $1stLine -project '1st'
-Add-DemoADGroupMembers -quantity $2ndLine.count -members $2ndLine -project '2nd'
+Add-DemoADGroupMembers -quantity $1stLine.count -members $1stLine -tier '1st'
+Add-DemoADGroupMembers -quantity $2ndLine.count -members $2ndLine -tier '2nd'
 Add-ADGroupMember -identity 'Admins' -Members $Admins
 Add-ADGroupMember -identity 'Domain Admins' -Members 'Admins'
 
@@ -35,7 +36,7 @@ Add-MstscMembers
 
 ###Before entering session, please Enable-PSRemoting on server. Domains Admin credentials
 $cred = Get-Credential
-Invoke-Command -ComputerName WIN-E83VKKDADK7 -Credential $cred `
+Invoke-Command -ComputerName SERVER.DEMO.COM -Credential $cred `
     -ScriptBlock{ 
     
         ###Creating roaming dirs        

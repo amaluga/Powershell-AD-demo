@@ -1,5 +1,5 @@
 #Part 1 CSV Creation
-Set-ExecutionPolicy RemoteSigned
+Set-ExecutionPolicy Unrestricted
 
 Set-Location C:\Users\"Amadeusz Demo"\Desktop\Powershell-AD-demo-Master
 Import-Module .\DemoModule.psm1

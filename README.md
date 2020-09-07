@@ -30,4 +30,4 @@ UPDATE 9/6/2020:
 - DemoModule.psm1 and Main.ps1: On line 302 in Add-DemoADGroupMembers - changed indistinct argument name "project" to "tier". Now it looks much clearer. Respectively changed in Main.ps1 on line 28 and 29
 - Main.ps1: Changed absolute to relative paths on 5, 7, 13 lines
 - Set server name to SERVER.DEMO.COM - easier to perform tests
-- Set execution policy for unrestricted as when downloading it from GitHub, importing the module is being blocked cause of unsigned Internet file - to be improved
+- Set execution policy to unrestricted as when downloading it from GitHub, importing the module is being blocked cause of unsigned Internet file - to be improved
